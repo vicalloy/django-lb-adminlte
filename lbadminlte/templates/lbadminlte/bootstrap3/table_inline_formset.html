@@ -1,0 +1,56 @@
+{% load crispy_forms_tags %}
+{% load crispy_forms_utils %}
+{% load crispy_forms_field %}
+
+{% specialspaceless %}
+    <div>
+        {{ formset.management_form|crispy }}
+    </div>
+
+    <table style="display: none;">
+      <tr style="display: none;" id="{{ formset.prefix }}-empty">
+        {% if formset.empty_form_plus %}
+          {% for field in formset.empty_form_plus %}
+            {% include 'bootstrap3/field.html' with tag="td" form_show_labels=False %}
+          {% endfor %}
+        {% else %}
+          {% for field in formset.empty_form %}
+            {% include 'bootstrap3/field.html' with tag="td" form_show_labels=False %}
+          {% endfor %}
+        {% endif %}
+      </tr>
+    </table>
+
+    <table{% if form_id %} id="{{ form_id }}_table"{% endif%} class="table table-striped table-condensed fs">
+        <tbody>
+          {% if formset.readonly and not formset.queryset.exists %}
+          {% else %}
+              <tr>
+                  {% for field in formset.empty_form %}
+                      {% if field.label and not field.is_hidden %}
+                          {# control-label  #}
+                          <th for="{{ field.auto_id }}" class="th-{{ field.name }} {% if field.field.required %}requiredField{% endif %}">
+                              {{ field.label|safe }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
+                          </th>
+                      {% endif %}
+                  {% endfor %}
+              </tr>
+          {% endif %}
+        </tbody>
+
+        <tbody>
+            {% for form in formset %}
+                {% if form_show_errors and not form.is_extra %}
+                    {% include "bootstrap3/errors.html" %}
+                {% endif %}
+
+                <tr>
+                    {% for field in form %}
+                        {% include 'bootstrap3/field.html' with tag="td" form_show_labels=False %}
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            <tr></tr>
+        </tbody>
+    </table>
+{% endspecialspaceless %}

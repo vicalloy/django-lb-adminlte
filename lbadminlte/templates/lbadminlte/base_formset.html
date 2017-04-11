@@ -1,0 +1,109 @@
+{% extends "base_form.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% load compress %}
+
+{% block body_class %}skin-blue sidebar-collapse{% endblock %}
+
+{% block form_class %}{% endblock %}
+
+{% block right_side_content %}
+  {% block right_side_content_top %}
+  {% endblock %}
+
+  {% block right_side_content_form %}
+  <div class="box">
+    <div class="box-header"> </div>
+    <div class="box-body form-horizontal m-form">
+      {% crispy form %}
+    </div>
+  </div>
+ {% endblock %}
+
+  {% block before_fomset_list %}
+  {% endblock %}
+
+  {% block fomset_list %}
+    <div class="box">
+      <div class="box-header">
+        <span class="rt-btns">
+          <a id="id-add-fs" href="###">
+              Add
+          </a>
+        </span>
+        <h3 class="box-title">
+          {% block formset_title %}Sub Items{% endblock %}
+        </h3>
+      </div>
+      <div id="id-fs-group" class="box-body table-responsive no-padding fs_div">
+        {% crispy formset %}
+      </div>
+    </div>
+  {% endblock %}
+
+  {% block after_fomset_list %}
+  {% endblock %}
+
+  <div class="box">
+    <div class="box-body">
+      {% block fs_form_bottom_ext_from %}
+      {% endblock %}
+      <div class="form-group">
+        <div class="col-xs-offset-2 col-xs-10">
+          {% block form_bottom_ext %}
+          {% endblock %}
+          {% block form_act_btns %}
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-default goback">Cancel</button>
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer_ext %}
+  {{ block.super}}
+
+  {% if form %}
+  <script type="text/javascript">
+    $(function(){
+      {% for f in form.one_row_fields %}
+        fmtOneRowField('{{ f }}');
+      {% endfor %}
+    })
+  </script>
+  {% endif %}
+
+  {% compress js %}
+  <script src="{% static 'js/django.formset.js' %}" type="text/javascript"></script>
+  {% endcompress %}
+
+  {% block formset_js %}
+    <script type="text/javascript">
+      function initRow(row) {
+        row.removeClass('checkbox')
+        $('td', row).removeClass('checkbox');
+      }
+      $(function(){
+        $('#id-fs-group table.fs tbody tr').formset({
+            prefix: '{{ formset.prefix }}',
+            formCssClass: 'fs-dynamic-form',
+            addCssClass: 'add-row btn btn-default',
+            deleteCssClass: 'delete-row',
+            formTemplate: '#fs-empty',
+            added: function(row){
+              initRow(row);
+            },
+            inited: function(row){
+              initRow(row);
+            }
+        });
+        $('#id-add-fs').click(function(){
+          $('#id-fs-group .add-row').click();
+        });
+      });
+    </script>
+  {% endblock %}
+{% endblock %}

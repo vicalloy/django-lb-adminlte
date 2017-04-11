@@ -1,0 +1,62 @@
+{% extends "base_ext.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block body_class %}skin-blue sidebar-collapse{% endblock %}
+
+{% block right_side %}
+  <section class="content-header">
+    {% include "incs/messages.html" %}
+    {% block right_side_header %}
+      <div class="right-btns">
+      </div>
+      <h1>
+        <a href="#">XX</a>
+        &gt;
+        {% if object %}
+          {{ object }}
+        {% else %}
+          Create XX
+        {% endif %}
+      </h1>
+    {% endblock %}
+  </section>
+  <section class="content">
+    <form id="id-m-form" action="" method="post" class="form-horizontal {% block form_css_class %}{% endblock %}" {% block form_ext_attr %}{% endblock %} role="form">
+      {% block right_side_content %}
+        {% block right_side_content_top %}
+        {% endblock %}
+        <div class="box">
+          <div class="box-header">
+          </div>
+          <div class="box-body">
+            {% crispy form %}
+            <div class="form-group">
+              <div class="col-xs-offset-2 col-xs-10">
+                {% block form_bottom_ext %}
+                {% endblock %}
+                {% block form_act_btns %}
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="button" class="btn btn-default goback">Cancel</button>
+                {% endblock %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endblock %}
+    </form>
+  </section>
+{% endblock %}
+
+{% block footer_ext %}
+  {{ block.super }}
+  <script type="text/javascript">
+    {% if form %}
+    $(function(){
+      {% for f in form.one_row_fields %}
+        fmtOneRowField('{{ f }}');
+      {% endfor %}
+    })
+    {% endif %}
+  </script>
+{% endblock %}

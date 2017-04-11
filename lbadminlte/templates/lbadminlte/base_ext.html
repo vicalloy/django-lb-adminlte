@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load lbutils %}
+
+{% block body %}
+  {% block header %}
+    <header class="main-header">
+      <a href="{% url 'index' %}" class="logo">{% get_setting "PROJECT_TITLE" %}</a>
+      <nav class="navbar navbar-static-top">
+        <!-- container-fluid -->
+        <div>
+          <div class="navbar-header hidden-lt-ie-9">
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+              <span class="sr-only">Toggle navigation</span>
+            </a>
+            {% comment %}
+            <a href="../../index2.html" class="navbar-brand"><b>Admin</b>LTE</a>
+            {% endcomment %}
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+              <i class="fa fa-bars"></i>
+            </button>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="navbar-collapse">
+            {% block header_nav_left %}
+            {% endblock %}
+            {% block header_nav_right %}
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">{{ user }}</a></li>
+                <li><a href="#">Change Password</a></li>
+                <li><a href="#">Logout</a></li>
+              </ul>
+            {% endblock %}
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    </header>
+  {% endblock %}
+
+  <div class="wrapper row-offcanvas row-offcanvas-left">
+    <aside class="left-side sidebar-offcanvas">
+      {% block left_side %}
+        <section class="sidebar">
+          <ul class="sidebar-menu">
+            <li id="id-nav-todo">
+              <a href="#">
+                <i class="fa fa-user"></i> APP 1
+              </a>
+            </li>
+            <li id="id-nav-mywf">
+              <a href="#">
+                <i class="fa fa-group"></i> APP 2
+              </a>
+            </li>
+          </ul>
+        </section>
+      {% endblock %}
+    </aside>
+
+    <aside class="right-side">
+      {% block right_side %}
+        <section class="content-header">
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Blank page</li>
+          </ol>
+          <h1>
+            Blank page
+            <small>Control panel</small>
+          </h1>
+        </section>
+        <section class="content">
+          <br> xx <br> xx <br> xx <br> xx
+          <br> xx <br> xx <br> xx <br> xx
+          <br> xx <br> xx <br> xx <br> xx
+          <br> xx <br> xx <br> xx <br> xx
+          <br> xx <br> xx <br> xx <br> xx
+          <br> xx <br> xx <br> xx <br> xx
+          <br> xx <br> xx <br> xx <br> xx
+          <br> xx <br> xx <br> xx <br> xx
+          <br> xx <br> xx <br> xx <br> xx
+          <br> xx <br> xx <br> xx <br> xx
+          <br> xx <br> xx <br> xx <br> xx
+          <br> xx <br> xx <br> xx <br> xx
+        </section>
+      {% endblock %}
+    </aside>
+    <footer class="main-footer">
+      {% block main_footer %}
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 2.0
+      </div>
+      <strong>Copyright &copy; 2015-2017 <a href="https://haoluobo.com/">vicalloy</a>.</strong> All rights reserved.
+      {% endblock %}
+    </footer>
+  </div>
+{% endblock %}
