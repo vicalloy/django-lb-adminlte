@@ -1,0 +1,2 @@
+recursive-include lbadminlte/templates/ *.html
+recursive-include lbadminlte/locale *.mo *.po
