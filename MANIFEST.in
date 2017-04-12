@@ -1,2 +1,3 @@
 recursive-include lbadminlte/templates/ *.html
 recursive-include lbadminlte/locale *.mo *.po
+recursive-include lbadminlte/static *.js *.ico *.css *.png
