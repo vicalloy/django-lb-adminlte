@@ -5,7 +5,7 @@
 {% block body %}
   {% block header %}
     <header class="main-header">
-      <a href="{% url 'index' %}" class="logo">{% get_setting "PROJECT_TITLE" %}</a>
+      <a href="{% get_setting 'HOME_URL' '/' %}" class="logo">{% get_setting "PROJECT_TITLE" %}</a>
       <nav class="navbar navbar-static-top">
         <!-- container-fluid -->
         <div>
