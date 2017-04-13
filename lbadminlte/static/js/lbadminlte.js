@@ -9,8 +9,7 @@ if(typeof String.prototype.trim !== 'function') {
 }
 
 function fmtOneRowField(fieldName) {
-  $('label[for=id_' + fieldName + ']').removeClass('col-xs-4').addClass('col-xs-2');
-  $('#id_' + fieldName + '').parent().removeClass('col-xs-8').addClass('col-xs-10');
+  $('#id_' + fieldName + '').parent().removeClass('col-md-4').addClass('col-md-10');
 }
 
 $(function(){
