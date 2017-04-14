@@ -9,7 +9,7 @@ addons:
       - python3.6
 
 install:
-  - pip install tox
+  - pip install --upgrade pip setuptools tox virtualenv coveralls
   - npm install -g bower
 
 env:
