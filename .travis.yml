@@ -25,6 +25,9 @@ env:
 script:
   - tox
 
+notifications:
+  email: false
+
 matrix:
   allow_failures:
     - env: TOXENV=py35-django_trunk
