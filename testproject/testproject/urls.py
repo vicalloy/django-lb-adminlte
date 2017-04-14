@@ -19,7 +19,8 @@ from . import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.base, name='index'),
-    url(r'^base_ext/$', views.base_ext, name='base'),
+    url(r'^$', views.base, name='base'),
+    url(r'^base_ext/$', views.base_ext, name='base_ext'),
+    url(r'^form/$', views.form, name='form'),
 
 ]
