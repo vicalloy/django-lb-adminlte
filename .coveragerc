@@ -1,0 +1,12 @@
+[run]
+branch = True
+source = lbadminlte
+omit = lbadminlte/tests/*
+
+[report]
+show_missing = True
+skip_covered = True
+omit = lbadminlte/tests/*
+
+[html]
+directory = coverage_html
