@@ -15,4 +15,4 @@ def form(request):
     ctx = {
         'form': LeaveForm()
     }
-    return render(request, 'base_form.html', ctx)
+    return render(request, 'form.html', ctx)
