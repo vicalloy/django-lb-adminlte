@@ -1,1 +1,23 @@
 {% extends "lbadminlte/base_ext.html" %}
+
+{% block left_side %}
+  <section class="sidebar">
+    <ul class="sidebar-menu">
+      <li id="id-nav-home">
+        <a href="/">
+          <i class="fa fa-th"></i> Base
+        </a>
+      </li>
+      <li id="id-nav-base-ext">
+        <a href="/base_ext/">
+          <i class="fa fa-th"></i> Base Ext
+        </a>
+      </li>
+      <li id="id-nav-form">
+        <a href="/form/">
+          <i class="fa fa-th"></i> Form
+        </a>
+      </li>
+    </ul>
+  </section>
+{% endblock %}
