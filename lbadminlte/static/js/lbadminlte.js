@@ -95,6 +95,8 @@ function initUploader(sel, btnTxt) {
 // upload end ...
 
 $(function(){
+  $(".datetimeinput").flatpickr({enableTime: true});
+
   $("a.with-next").attr('href', function(i, h) {
     var url = encodeURIComponent(document.URL);
     return h + (h.indexOf('?') != -1 ? "&next=" : "?next=") + url;
@@ -136,5 +138,4 @@ $(function(){
   if(isIE() == 8) {
     fixIE8();
   }
-
 });
