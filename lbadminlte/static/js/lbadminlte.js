@@ -95,7 +95,9 @@ function initUploader(sel, btnTxt) {
 // upload end ...
 
 $(function(){
-  $(".datetimeinput").flatpickr({enableTime: true});
+  try {
+    $(".datetimeinput").flatpickr({enableTime: true});
+  } catch(err) {}
 
   $("a.with-next").attr('href', function(i, h) {
     var url = encodeURIComponent(document.URL);
