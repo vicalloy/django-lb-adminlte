@@ -48,12 +48,12 @@ function initAttachUpload(sel, ndiv) {
         var li = data.li;
         li.html('');
         li = li.append(f.fn);
-        li.append(' <a href="###" class="btn-rm-attach" oid="' + f.id +'"><span class="glyphicon glyphicon-remove"></span></a>');
+        li.append(' <a href="###" class="btn-rm-attach" oid="' + f.pk+'"><span class="glyphicon glyphicon-remove"></span></a>');
         ul.append(li);
         initRmAttachBtn($('.btn-rm-attach', ul), sel);
         var op = $('<option/>')
         op.attr('selected', 'selected');
-        op.attr('value', f.id);
+        op.attr('value', f.pk);
         sel.append(op);
       }
   });
@@ -82,7 +82,7 @@ function initUploader(sel, btnTxt) {
     btnTxt = 'Add';
   }
   var btnUpload = $('<span class="fileinput-button">' + btnTxt +
-    '<input class="attachupload" type="file" multiple="multiple" name="file"/>' +
+    '<input class="attachupload" type="file" multiple="multiple" name="attach_file"/>' +
     '</span>');
   var ndiv = $('<div></div>');
   ndiv.append(btnUpload);
