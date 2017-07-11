@@ -25,21 +25,11 @@
   {% endblock %}
 
   {% block fomset_list %}
-    <div class="box">
-      <div class="box-header">
-        <span class="rt-btns">
-          <a id="id-add-fs" href="###">
-              Add
-          </a>
-        </span>
-        <h3 class="box-title">
-          {% block formset_title %}Sub Items{% endblock %}
-        </h3>
-      </div>
-      <div id="id-fs-group" class="box-body table-responsive no-padding fs_div">
-        {% crispy formset %}
-      </div>
-    </div>
+  <div class="formset-list">
+    {% for formset in formset_list %}
+      {% include "lbadminlte/inc_formset.html" %}
+    {% endfor %}
+  </div>
   {% endblock %}
 
   {% block after_fomset_list %}
@@ -82,27 +72,31 @@
 
   {% block formset_js %}
     <script type="text/javascript">
-      function initRow(row) {
-        row.removeClass('checkbox')
-        $('td', row).removeClass('checkbox');
-      }
       $(function(){
-        $('#id-fs-group table.fs tbody tr').formset({
-            prefix: '{{ formset.prefix }}',
-            formCssClass: 'fs-dynamic-form',
-            addCssClass: 'add-row btn btn-default',
-            deleteCssClass: 'delete-row',
-            formTemplate: '#fs-empty',
-            added: function(row){
-              initRow(row);
-            },
-            inited: function(row){
-              initRow(row);
-            }
+        function initRow(row) {
+          row.removeClass('checkbox')
+          $('td', row).removeClass('checkbox');
+        }
+        $('.formset-list .fs-btn-add').click(function(){
+          var t = $(this);
+          var box = t.closest('.box');
+          $('.add-row', box).click();
         });
-        $('#id-add-fs').click(function(){
-          $('#id-fs-group .add-row').click();
-        });
+        {% for formset in formset_list %}
+          $('.formset-list div.box.{{ formset.prefix }} table.fs tbody tr').formset({
+              prefix: '{{ formset.prefix }}',
+              formCssClass: '{{ formset.prefix }}-dynamic-form',
+              addCssClass: 'add-row btn btn-default',
+              deleteCssClass: 'delete-row',
+              formTemplate: '#{{ formset.prefix }}-empty',
+              added: function(row){
+                initRow(row);
+              },
+              inited: function(row){
+                initRow(row);
+              }
+          });
+        {% endfor %}
       });
     </script>
   {% endblock %}

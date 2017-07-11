@@ -1,0 +1,17 @@
+{% load crispy_forms_tags %}
+
+<div class="box {{ formset.prefix }}">
+  <div class="box-header">
+    <span class="rt-btns">
+      <a class="fs-btn-add" href="###">
+          Add
+      </a>
+    </span>
+    <h3 class="box-title">
+      {{ formset.title }}
+    </h3>
+  </div>
+  <div class="box-body fs-group table-responsive no-padding fs_div">
+    {% crispy formset %}
+  </div>
+</div>
