@@ -1,16 +1,7 @@
-guage: python
+language: python
 dist: bionic
 
 cache: pip
-
-addons:
-  apt:
-    sources:
-      - deadsnakes
-    packages:
-      - graphviz
-      - libgraphviz-dev
-      - pkg-config
 
 install:
   - pip install --upgrade pip setuptools tox virtualenv coveralls
