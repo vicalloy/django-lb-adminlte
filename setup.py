@@ -1,4 +1,5 @@
 from setuptools import find_packages, setup
+
 from lbadminlte import __version__
 
 setup(
@@ -12,16 +13,16 @@ setup(
     packages=find_packages(exclude=['tests']),
     include_package_data=True,
     install_requires=[
-        'Django>=1.8',
+        'Django>=2.2',
         'django-crispy-forms>=1.6',
-        'django-lbutils>=1.0.2',
+        'django-lbutils>=1.1.0',
         'django-compressor>=2.1.1',
         'django-bower>=5.2.0',
     ],
     extras_require={
         'tests': [
             'coverage',
-            'flake8>=2.0,<3.0',
+            'flake8==3.7.9',
             'isort',
         ]
     },
@@ -36,6 +37,8 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
 )

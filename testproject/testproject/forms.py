@@ -1,5 +1,4 @@
 from django import forms
-
 from lbutils import BootstrapFormHelperMixin
 
 from .models import Leave
