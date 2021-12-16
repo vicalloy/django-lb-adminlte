@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "admin-lte": "2.3.11",
+    "font-awesome": "4.7.0",
+    "html5shiv": "^3.7.3",
+    "ionicons": "2.0.1",
+    "modernizr": "^3.11.8",
+    "respond": "^0.9.0",
+    "selectivizr": "^1.0.3"
+  }
+}

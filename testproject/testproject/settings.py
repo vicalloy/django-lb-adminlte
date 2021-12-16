@@ -42,7 +42,6 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'compressor',
-    'djangobower',
     'lbutils',
 
     'testproject',
@@ -138,28 +137,7 @@ STATICFILES_FINDERS = (
 )
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'bower_components'),
-)
-
-# bower
-STATICFILES_FINDERS += (('djangobower.finders.BowerFinder'),)
-BOWER_COMPONENTS_ROOT = BASE_DIR
-
-BOWER_INSTALLED_APPS = (
-    'admin-lte#2.3.11',
-    'font-awesome#4.7.0',
-    'ionicons#2.0.1',
-
-    'modernizr',
-    # POLYFILLS: javascript fallback solutions for older browsers.
-    # CSS3 selectors for IE 6-8.
-    'selectivizr',
-    # min/max width media queries for IE 6-8.
-    'respond',
-    # CSS3 styles for IE 6-8.
-    'pie',
-    # HTML5 tag support for IE 6-8.
-    'html5shiv',
+    os.path.join(BASE_DIR, '..', 'node_modules'),
 )
 
 # django-compressor

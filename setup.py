@@ -13,11 +13,10 @@ setup(
     packages=find_packages(exclude=['tests']),
     include_package_data=True,
     install_requires=[
-        'Django>=2.2',
+        'Django>=2.2,<4.0',
         'django-crispy-forms>=1.6',
         'django-lbutils>=1.1.0',
         'django-compressor>=2.1.1',
-        'django-bower>=5.2.0',
     ],
     extras_require={
         'tests': [
